@@ -1,0 +1,34 @@
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment variables
+.env
+
+# Logs
+logs/
+*.log
+log.txt
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.swp
+*.swo
+
+# Optional: if you're storing temp uploads or caching
+/tmp/
+uploads/
+
+# IDE-specific (WebStorm, VSCode, etc.)
+.idea/
+.vscode/
+
+# Build output (if any)
+dist/
+build/
