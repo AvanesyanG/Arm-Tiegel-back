@@ -20,6 +20,7 @@ import {
     deleteCategory
 } from '../../../controllers/admin/category.controller.js';
 import { handleFileUpload } from '../../../../middleware/fileUpload.middleware.js';
+import {getOrders, updateOrderStatus} from '../../../controllers/order.controller.js';
 
 const router = Router();
 
@@ -28,6 +29,10 @@ const router = Router();
 router.use(authenticate, authorizeAdmin);
 // router.use((req, res, next) => next());
 
+// order routes
+router.get('/orders', getOrders);
+router.get('/orders', getOrders);
+router.patch('/orders/:id/status', updateOrderStatus);
 
 // Product routes with image upload
 router.post('/products',

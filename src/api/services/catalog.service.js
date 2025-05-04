@@ -21,7 +21,7 @@ export const getCatalogData = () => {
                         as: "item",
                         in: {
                             _id: "$$item._id",
-                            image_url: "$$item.image.secure_url", // Rename to image_url
+                            image_url: "$$item.image.secure_url",
                             name: "$$item.name",
                             description: "$$item.description",
                             dimensions: "$$item.dimensions"

@@ -12,3 +12,9 @@ export const ROLES = {
     ADMIN: 'admin',
     EMPLOYEE: 'employee'
 };
+export const ORDER_STATUS = {
+    PENDING: 'pending',
+    PROCESSING: 'processing',
+    SHIPPED: 'shipped',
+    DELIVERED: 'delivered'
+};

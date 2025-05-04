@@ -4,6 +4,10 @@ import { deleteImage } from '../api/services/cloudinary.service.js';
 const { Schema } = mongoose;
 
 const productSchema = new Schema({
+    _id: {
+        type: String,
+        required: true
+    },
     name: {
         en: { type: String, required: [true, 'English name is required'] },
         ru: { type: String, required: [true, 'Russian name is required'] },
@@ -20,14 +24,8 @@ const productSchema = new Schema({
         hy: { type: String, required: [true, 'Armenian dimensions are required'] }
     },
     image: {
-        public_id: {
-            type: String,
-            required: [false, 'Image public ID is required']
-        },
-        secure_url: {
-            type: String,
-            required: [false, 'Image URL is required']
-        }
+        public_id: String,
+        secure_url: String
     },
     category: {
         type: Schema.Types.ObjectId,
@@ -40,7 +38,6 @@ const productSchema = new Schema({
     toObject: { virtuals: true }
 });
 
-// Add pre-delete hook for image cleanup
 productSchema.pre('deleteOne', { document: true, query: false }, async function(next) {
     try {
         await deleteImage(this.image.public_id);

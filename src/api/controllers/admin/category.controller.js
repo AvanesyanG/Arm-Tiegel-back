@@ -92,19 +92,20 @@ export const updateCategory = async (req, res) => {
 // Delete category
 export const deleteCategory = async (req, res) => {
     try {
-        const category = await Category.findByIdAndDelete(req.params.id);
+        const category = await Category.findById(req.params.id);
+        const productsExist = await Product.exists({ category: category._id });
 
-        if (!category) {
-            return res.status(HTTP_STATUS.NOT_FOUND).json({
-                error: 'Category not found'
+        if (productsExist) {
+            return res.status(HTTP_STATUS.BAD_REQUEST).json({
+                error: 'Cannot delete category with associated products'
             });
         }
 
-        res.status(HTTP_STATUS.NO_CONTENT).send();
+        await category.deleteOne();
+        res.status(HTTP_STATUS.OK).send();
     } catch (error) {
         res.status(HTTP_STATUS.INTERNAL_ERROR).json({
-            error: error.message,
-            details: error.stack
+            error: error.message
         });
     }
 };

@@ -5,6 +5,8 @@ import connectDB from './config/db.js';
 import authRoutes from './api/routes/v1/auth.routes.js';
 import catalogRoutes from './api/routes/v1/catalog.routes.js';
 import adminRoutes from './api/routes/v1/admin/admin.routes.js';
+import orderRoutes from './api/routes/v1/order.routes.js';
+import contactRoutes from './api/routes/v1/contact.routes.js';
 
 const app = express();
 const port = process.env.PORT || 4000;
@@ -20,6 +22,8 @@ app.use(express.json());
 app.use('/api/v1/auth', authRoutes);
 app.use('/api/v1/catalog', catalogRoutes);
 app.use('/api/v1/admin', adminRoutes);
+app.use('/api/v1/orders', orderRoutes);
+app.use('/api/v1/contact', contactRoutes);
 
 app.get('/', (req, res) => res.send('API working'));
 
